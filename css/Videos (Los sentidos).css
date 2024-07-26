@@ -1,0 +1,88 @@
+/* Estilos base */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.body-container {
+    font-family: "Inter", sans-serif;
+    color: aliceblue;
+    background-color: rgb(77, 197, 246);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Contenido principal */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding-top: 100px; /* Ajusta el valor para mover más arriba o más abajo */
+}
+
+/* Contenedor de la barra de navegación */
+.navbar-container {
+    width: 100%; /* Asegura que el navbar ocupe todo el ancho disponible */
+}
+
+/* Descripción del video */
+.descripcion-video {
+    color: aliceblue;
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+/* Contenedor del video */
+.video-container {
+    width: 80%; /* Ajusta este valor según sea necesario para el tamaño del video */
+    max-width: 600px; /* Limita el tamaño máximo del video */
+    margin: 0 auto;
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor del botón */
+.boton-container {
+    margin-top: 20px;
+}
+
+.boton-actividad {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: aliceblue;
+    background-color: navy;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.boton-actividad:hover {
+    background-color: mediumvioletred;
+}
+
+/* Media query para dispositivos más pequeños */
+@media only screen and (max-width: 768px) {
+    /* Ajustar estilos para dispositivos más pequeños aquí */
+    .descripcion-video {
+        width: 80%; /* Ajusta el ancho según el tamaño de la pantalla */
+    }
+
+    .video-container {
+        width: 90%; /* Ajusta el ancho según el tamaño de la pantalla */
+    }
+}

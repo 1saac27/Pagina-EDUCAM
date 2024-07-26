@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL CUERPO</title>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../Css-Responsive/inicioCuerpo.css">
+    <link rel="stylesheet" href="../Css-Responsive/Navbar.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- SCRIPT DE LLAMADA DEL NAVBAR  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            $("#navbar-container").load("../NavbarR.html");
+        });
+    </script>
+    <script src="../JS/Voz/ElCuerpo.js"></script>
+</head>
+
+<body>
+    <!-- DIV DE LLAMADA DEL NAVBAR -->
+    <div id="navbar-container"></div>
+
+    <!-- Contenedor principal -->
+    <div class="container1">
+        <!-- Cuadro -->
+        <div id="miCuadro">
+            <!-- Botón dentro del cuadro -->
+            <button class="botonCuadro" onclick="window.location.href = './1Cuerpo.html';">EL CUERPO</button>
+        </div>
+
+        <!-- Texto lateral -->
+        <div class="texto-lateral">
+            <p><button class="boton-audio" id="audio1"><i class="material-icons">volume_up</i></button>Bienvenido</p>
+            <p>Nuestro cuerpo esta conformado por partes importantes, las cuales debemos de conocer</p>
+            <p>Da clic al botón verde.</p>
+        </div>
+
+    </div>
+
+    <!-- Imagen debajo del texto lateral -->
+    <div class="imagen-debajo"></div>
+
+    <!--Botones de Volver y Siguiente-->
+    <div class="botones">
+        <button class="boton" onclick="window.history.back();">Volver</button>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sopa de Letras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: flex-start; /* Alinea los elementos al principio (izquierda) */
+            align-items: flex-start; /* Alinea los elementos al principio (arriba) */
+            height: 100vh;
+            background-color: #87CEEB; /* Azul cielo */
+            flex-direction: row; /* Coloca los elementos en fila */
+            position: relative;
+            padding: 20px;
+        }
+        #container {
+            display: flex;
+            flex-direction: column; /* Coloca los elementos en columna dentro del contenedor */
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            width: 50px; /* Aumentar el tamaño de las celdas */
+            height: 50px; /* Aumentar el tamaño de las celdas */
+            text-align: center;
+            border: 1px solid #000;
+            font-size: 24px; /* Aumentar el tamaño de la fuente */
+            cursor: pointer;
+        }
+        #palabras {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 20px;
+        }
+        .found {
+            text-decoration: line-through;
+            color: green;
+        }
+        .word-item-container {
+            display: flex;
+            flex-direction: row; /* Alinea los elementos en fila */
+            align-items: center;
+            flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si no caben */
+        }
+        .word-item {
+            display: flex;
+            flex-direction: column; /* Coloca las imágenes y palabras en columna */
+            align-items: center;
+            margin: 10px; /* Espaciado entre los elementos */
+        }
+        .word-item img {
+            margin-bottom: 5px; /* Espacio entre la imagen y la palabra */
+            height: 110px; /* Aumentar el tamaño de las imágenes */
+            width: 110px; /* Aumentar el tamaño de las imágenes */
+        }
+        #boton-siguiente {
+            display: none;
+            margin-top: 20px;
+        }
+        #mensaje-felicidades {
+            display: none;
+            text-align: center;
+        }
+        #mensaje-felicidades img {
+            margin-top: 20px;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="sopa-de-letras"></div>
+    </div>
+    <div id="palabras">
+        <h3>Palabras a encontrar</h3>
+        <div id="lista-palabras" class="word-item-container"></div>
+    </div>
+    <button id="boton-siguiente" onclick="irASiguienteSeccion()">Siguiente</button>
+    <div id="mensaje-felicidades">
+        <h1>Felicidades</h1>
+        <img src="img/Palomita.png" alt="Palomita">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js/dist/fireworks.js"></script>
+    <script>
+        const todasLasPalabras = [
+            ["CUADERNOS", "LAPIZ", "LIBROS", "MESA", "MOCHILA"],
+            ["PEGAMENTO", "PLUMA", "PROFESORA", "SALON", "SILLA"]
+        ];
+        const todasLasImagenes = [
+            ["CUADERNO.gif", "LÁPIZ.gif", "LIBRO.gif", "MESA.gif", "MOCHILAA.gif"],
+            ["PEGAMENTO.gif", "PLUMA.gif", "PROFESOR.gif", "SALÓN.gif", "SILLA.gif"]
+        ];
+        const tamaño = 9;
+        let palabrasEncontradas = [];
+        let seccionActual = 0;
+        let seleccion = [];
+
+        function crearSopaDeLetras(palabras) {
+            let grid = Array.from({ length: tamaño }, () => Array(tamaño).fill(''));
+
+            palabras.forEach(palabra => {
+                let colocado = false;
+                while (!colocado) {
+                    let direccion = Math.floor(Math.random() * 3);
+                    let fila, columna;
+                    if (direccion === 0) { // horizontal
+                        fila = Math.floor(Math.random() * tamaño);
+                        columna = Math.floor(Math.random() * (tamaño - palabra.length));
+                    } else if (direccion === 1) { // vertical
+                        fila = Math.floor(Math.random() * (tamaño - palabra.length));
+                        columna = Math.floor(Math.random() * tamaño);
+                    } else { // diagonal
+                        fila = Math.floor(Math.random() * (tamaño - palabra.length));
+                        columna = Math.floor(Math.random() * (tamaño - palabra.length));
+                    }
+
+                    let puedeColocar = true;
+                    for (let i = 0; i < palabra.length; i++) {
+                        let f = fila + (direccion === 1 || direccion === 2 ? i : 0);
+                        let c = columna + (direccion === 0 || direccion === 2 ? i : 0);
+                        if (grid[f][c]) {
+                            puedeColocar = false;
+                            break;
+                        }
+                    }
+
+                    if (puedeColocar) {
+                        for (let i = 0; i < palabra.length; i++) {
+                            let f = fila + (direccion === 1 || direccion === 2 ? i : 0);
+                            let c = columna + (direccion === 0 || direccion === 2 ? i : 0);
+                            grid[f][c] = palabra[i];
+                        }
+                        colocado = true;
+                    }
+                }
+            });
+
+            // Rellenar los espacios vacíos con letras aleatorias
+            for (let i = 0; i < tamaño; i++) {
+                for (let j = 0; j < tamaño; j++) {
+                    if (!grid[i][j]) {
+                        grid[i][j] = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+                    }
+                }
+            }
+
+            return grid;
+        }
+
+        function renderizarSopaDeLetras(grid) {
+            let contenedor = document.getElementById('sopa-de-letras');
+            contenedor.innerHTML = '';
+            let tabla = document.createElement('table');
+            grid.forEach((fila, i) => {
+                let tr = document.createElement('tr');
+                fila.forEach((letra, j) => {
+                    let td = document.createElement('td');
+                    td.textContent = letra;
+                    td.dataset.fila = i;
+                    td.dataset.columna = j;
+                    td.addEventListener('click', seleccionarLetra);
+                    tr.appendChild(td);
+                });
+                tabla.appendChild(tr);
+            });
+            contenedor.appendChild(tabla);
+        }
+
+        function renderizarListaDePalabras(palabras, imagenes) {
+            let lista = document.getElementById('lista-palabras');
+            lista.innerHTML = '';
+            palabras.forEach((palabra, index) => {
+                let div = document.createElement('div');
+                div.classList.add('word-item');
+                let img = document.createElement("img");
+                img.src = `img/${imagenes[index]}`;
+                img.alt = palabra;
+                // Ajusta el tamaño de las imágenes aquí
+                img.style.height = '110px'; // Aumenta la altura de la imagen
+                img.style.width = '110px'; // Aumenta el ancho de la imagen
+                div.appendChild(img);
+                let span = document.createElement("span");
+                span.textContent = palabra;
+                div.appendChild(span);
+                div.id = palabra;
+                lista.appendChild(div);
+            });
+        }
+        
+        
+
+        function seleccionarLetra(event) {
+            let td = event.target;
+            let fila = parseInt(td.dataset.fila);
+            let columna = parseInt(td.dataset.columna);
+            let letraSeleccionada = td.textContent;
+
+            // Verificar si la letra ya está seleccionada
+            let index = seleccion.findIndex(celda => celda.fila === fila && celda.columna === columna);
+
+            // Verificar si la letra forma parte de una palabra ya encontrada
+            let palabraEncontrada = palabrasEncontradas.some(palabra => {
+                return palabra.celdas.some(celda => celda.fila === fila && celda.columna === columna);
+            });
+
+            // Si la letra ya forma parte de una palabra encontrada, salir de la función
+            if (palabraEncontrada) {
+                return;
+            }
+
+            // Si la letra ya está seleccionada, eliminarla de la selección
+            if (index !== -1) {
+                seleccion.splice(index, 1);
+                td.style.backgroundColor = '';
+                return;
+            }
+
+            // Agregar la letra a la selección
+            seleccion.push({ fila, columna, letra: letraSeleccionada });
+            td.style.backgroundColor = 'yellow';
+
+            // Verificar si la selección forma alguna palabra válida
+            let palabraSeleccionada = seleccion.map(celda => celda.letra).join('');
+            let palabraReversa = seleccion.map(celda => celda.letra).reverse().join('');
+
+            if (todasLasPalabras[seccionActual].includes(palabraSeleccionada) || todasLasPalabras[seccionActual].includes(palabraReversa)) {
+                // Marcar palabra como encontrada
+                palabrasEncontradas.push({ palabra: palabraSeleccionada, celdas: [...seleccion] });
+
+                // Marcar letras de la palabra encontrada como amarillas y bloquear clics
+                seleccion.forEach(celda => {
+                    let td = document.querySelector(`td[data-fila='${celda.fila}'][data-columna='${celda.columna}']`);
+                    td.style.backgroundColor = 'yellow';
+                    td.classList.add('found'); // Añadir clase 'found' a las celdas de palabras encontradas
+                    td.removeEventListener('click', seleccionarLetra); // Eliminar el evento de clic
+                });
+
+                // Marcar palabra en la lista como encontrada
+                let li = document.getElementById(palabraSeleccionada);
+                if (li) {
+                    li.classList.add('found');
+                } else {
+                    li = document.getElementById(palabraReversa);
+                    li.classList.add('found');
+                }
+
+                seleccion = []; // Resetear selección
+
+                if (palabrasEncontradas.length === todasLasPalabras[seccionActual].length) {
+                    if (seccionActual === todasLasPalabras.length - 1) {
+                        mostrarMensajeFelicidades();
+                    } else {
+                        document.getElementById('boton-siguiente').style.display = 'block';
+                    }
+                }
+            } else {
+                // Verificar si la selección forma parte de una palabra válida
+                if (!esParteDePalabraValida(palabraSeleccionada) && !esParteDePalabraValida(palabraReversa)) {
+                    // Si la selección no forma parte de ninguna palabra válida, marcar letra como incorrecta
+                    td.style.backgroundColor = 'red';
+                    setTimeout(() => {
+                        td.style.backgroundColor = '';
+                        seleccion.pop();
+                    }, 500);
+                }
+            }
+        }
+
+        function esParteDePalabraValida(palabra) {
+            return todasLasPalabras[seccionActual].some(p => p.startsWith(palabra)) || todasLasPalabras[seccionActual].some(p => p.startsWith(palabra.split('').reverse().join('')));
+        }
+
+        function irASiguienteSeccion() {
+            if (seccionActual < todasLasPalabras.length - 1) {
+                seccionActual++;
+                palabrasEncontradas = [];
+                seleccion = [];
+                document.getElementById('boton-siguiente').style.display = 'none';
+                iniciarSeccion();
+            }
+        }
+
+        function iniciarSeccion() {
+            let sopaDeLetras = crearSopaDeLetras(todasLasPalabras[seccionActual]);
+            renderizarSopaDeLetras(sopaDeLetras);
+            renderizarListaDePalabras(todasLasPalabras[seccionActual], todasLasImagenes[seccionActual]);
+        }
+
+        function mostrarMensajeFelicidades() {
+            document.getElementById('mensaje-felicidades').style.display = 'block';
+            iniciarFuegosArtificiales();
+        }
+
+        function iniciarFuegosArtificiales() {
+            const fireworksContainer = document.createElement('div');
+            fireworksContainer.style.position = 'absolute';
+            fireworksContainer.style.top = 0;
+            fireworksContainer.style.left = 0;
+            fireworksContainer.style.width = '100%';
+            fireworksContainer.style.height = '100%';
+            fireworksContainer.style.zIndex = '9999';
+            document.body.appendChild(fireworksContainer);
+
+            const fireworks = new Fireworks(fireworksContainer, {
+                speed: 2,
+                particles: 100,
+                intensity: 30,
+                traceLength: 5,
+                traceSpeed: 2
+            });
+
+            fireworks.start();
+
+            setTimeout(() => {
+                fireworks.stop();
+                document.body.removeChild(fireworksContainer);
+            }, 5000);
+        }
+
+        iniciarSeccion();
+    </script>
+</body>
+</html>
+

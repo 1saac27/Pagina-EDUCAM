@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #87CEEB; /* Azul cielo */
+}
+
+#fireworks-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* No interfiere con los clics */
+    z-index: 9999; /* Por encima de otros elementos */
+}
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.drag-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.drag-container img {
+    width: 150px;  /* Aumentado a 150px */
+    height: 150px;  /* Aumentado a 150px */
+    cursor: grab;
+}
+
+.drop-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.drop-area {
+    width: 150px;  /* Aumentado a 150px */
+    height: 150px;  /* Aumentado a 150px */
+    border: 2px dashed #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.drop-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.reference-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.reference-container img {
+    width: 150px;  /* Aumentado a 150px */
+    height: 150px;  /* Aumentado a 150px */
+}
+
+.error-container {
+    margin-top: 20px;
+    font-size: 20px;
+    color: red;
+}
+
+.congratulations-container {
+    margin-top: 20px;
+    text-align: center;
+    display: none;
+}
+
+.congratulations-container img {
+    width: 50px;
+    height: 50px;
+}
+
+.congratulations-container p {
+    font-size: 18px;
+    color: green;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}

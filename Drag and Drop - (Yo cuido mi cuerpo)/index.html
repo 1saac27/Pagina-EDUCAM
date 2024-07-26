@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Juego de seleccionar imágenes</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdn.jsdelivr.net/npm/fireworks-js/dist/fireworks.min.js"></script>
+    </head>
+    
+    
+<body>
+    <div class="container">
+        <div id="fireworks-container"></div>
+        <div id="section1" class="section">
+            <div class="drag-container">
+                <img src="Images/Bañarse.png" alt="Bañarse" id="Bañarse" draggable="true" ondragstart="drag(event)" data-pair="BAÑARSE">
+                <img src="Images/Caer.png" alt="Caer" id="Caer" draggable="true" ondragstart="drag(event)" data-pair="CAER">
+                <img src="Images/Comer.png" alt="Comer" id="Comer" draggable="true" ondragstart="drag(event)" data-pair="COMER">
+                <img src="Images/Descansar.jpeg" alt="Descansar" id="Descansar" draggable="true" ondragstart="drag(event)" data-pair="DESCANSAR">
+                <img src="Images/Doctor.png" alt="Doctor" id="Doctor" draggable="true" ondragstart="drag(event)" data-pair="DOCTOR">
+            </div>
+            <div class="drop-container" id="dropContainer1"></div>
+            <div class="reference-container" id="referenceContainer1"></div>
+        </div>
+        <div id="section2" class="section" style="display: none;">
+            <div class="drag-container">
+                <img src="Images/Dolor de cabeza.png" alt="Dolor de cabeza" id="Dolor_de_cabeza" draggable="true" ondragstart="drag(event)" data-pair="DOLOR_DE_CABEZA">
+                <img src="Images/Dolor de estomago.png" alt="Dolor de estomago" id="Dolor_de_estomago" draggable="true" ondragstart="drag(event)" data-pair="DOLOR_DE_ESTOMAGO">
+                <img src="Images/Ejercicio.png" alt="Ejercicio" id="Ejercicio" draggable="true" ondragstart="drag(event)" data-pair="EJERCICIO">
+                <img src="Images/Jabon.png" alt="Jabon" id="Jabon" draggable="true" ondragstart="drag(event)" data-pair="JABON">
+                <img src="Images/Medicinas.png" alt="Medicina" id="Medicina" draggable="true" ondragstart="drag(event)" data-pair="MEDICINA">
+            </div>
+            <div class="drop-container" id="dropContainer2"></div>
+            <div class="reference-container" id="referenceContainer2"></div>
+        </div>
+        <div class="error-container">Errores: <span id="errorCount">0</span></div>
+        <div class="congratulations-container" id="congratulationsContainer" style="display: none;">
+            <img src="Images/Palomita.png" alt="Palomita">
+            <p>¡Felicidades! Has completado el juego.</p>
+        </div>
+        <button id="nextButton" style="display: none;" onclick="goToNextSection()">Siguiente</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
