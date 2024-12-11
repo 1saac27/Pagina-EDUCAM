@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Acerca%20de.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- LINKS DE BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/Navbar.css">
+
+    <title>Inicio</title>
+    <style>
+        body {
+            background-color: #1E90FF; /* Fondo azul */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+            color: aliceblue;
+        }
+
+        /* Cambio de color del título a magenta */
+        .container h1 {
+            font-size: 2.5rem; /* Tamaño de la fuente del título */
+            color: #ec4553;
+            background-color: #ffef65;
+            padding: 0 10px; /* Ajuste de espacio a los lados */
+            display: inline-block; /* Limita el fondo al tamaño del texto */
+            margin: 0;
+            font-family: 'Pacifico', cursive; /* Fuente llamativa */
+        }
+
+        #imageContainer {
+            margin-bottom: 20px; 
+        }
+
+        #image {
+            width: 250px;
+            height: auto;
+        }
+
+        .optionsContainer {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .option {
+            margin: 10px;
+            cursor: pointer;
+            border: 4px dotted transparent;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            transition: transform 0.2s ease;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para mayor visibilidad */
+        }
+
+        .option:hover {
+            transform: scale(1.05);
+        }
+
+        .option.correct {
+            border-color: green;
+            background-color: rgba(0, 255, 0, 0.2); /* Fondo verde translúcido para destacar la celda correcta */
+        }
+
+        .option.incorrect {
+            border-color: red;
+            animation: vibrate 0.2s ease-in-out 10;
+        }
+
+        @keyframes vibrate {
+            0% { transform: translate(0); }
+            25% { transform: translate(-5px); }
+            50% { transform: translate(5px); }
+            75% { transform: translate(-5px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes highlightGreen {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        #resultMessage {
+            margin-top: 20px;
+            width: 100px;
+            height: 100px;
+            display: none;
+            margin: 20px auto 0;
+        }
+
+        #winMessage {
+            display: none;
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            font-size: 2rem; /* Tamaño del texto */
+        }
+
+        #winMessage img {
+            display: block;
+            margin: 20px auto;
+            width: 50px;
+        }
+
+        .darken-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Pantalla oscura */
+            z-index: 999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Alinea el contenido verticalmente */
+            color: white;
+            font-size: 2.5rem; /* Tamaño más grande para el mensaje */
+            text-align: center;
+        }
+
+        .darken-screen button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            background-color: #4CAF50; /* Verde atractivo */
+            border: none;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra */
+            transition: all 0.3s ease; /* Transiciones suaves */
+        }
+
+        .darken-screen button:hover {
+            background-color: #45a049; /* Cambio de color en hover */
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4); /* Sombra más grande */
+            transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+        }
+
+        .darken-screen button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2); /* Sombra más pequeña cuando se presiona */
+            transform: scale(1.05);
+        }
+
+        .confetti {
+            position: absolute;
+            border-radius: 50%;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        #confettiContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            pointer-events: none;
+            display: none;
+        }
+
+        #errorsCounter {
+            position: fixed;
+            bottom: 20px; /* Cambiado de top a bottom */
+            right: 20px;
+            font-size: 1.2rem;
+            color: black;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /* Botón "Siguiente" más llamativo */
+        button {
+            background-color: #4CAF50; /* Verde atractivo */
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 1.5rem; /* Texto más grande */
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra */
+            transition: all 0.3s ease; /* Transiciones suaves */
+        }
+
+        button:hover {
+            background-color: #45a049; /* Cambio de color en hover */
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4); /* Sombra más grande */
+            transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+        }
+
+        button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2); /* Sombra más pequeña cuando se presiona */
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="grid-container">
+
+    <nav class="nav-01">
+        <img src="../assets/soft.png" alt="" id="SOFTEDUCAM">
+        <div class="buttons-navbar">
+            <a href="../../IndexR.html"><p>Inicio</p></a>
+            <a href="../Contenido.html"><p>Temas</p></a>
+            <a href="../Acerca de.html" class="acerca-de"><p>Acerca de</p></a>
+            <a href="../Ayuda(Adivina la imagen).html"><p>Ayuda</p></a>
+        </div>
+    </nav>
+    
+    <!-- DIV DE LLAMADA DEL NAVBAR -->
+    <div id="navbar-container"></div>
+
+    <div class="container">
+        <h1>Adivina la imagen</h1>
+        <p>Selecciona la imagen correcta de acuerdo a la palabra correspondiente en LSM</p>
+        <div id="imageContainer">
+            <img id="image" src="./images/BOCA.gif" alt="Imagen a adivinar">
+        </div>
+        <div class="optionsContainer" id="optionsContainer"></div>
+        <button onclick="nextImage()">Siguiente</button>
+        <img id="resultMessage" src="" alt="Resultado">
+        <div id="winMessage">
+            <div>Felicidades. Has ganado.</div>
+            <img src="./images/Palomita.png" alt="Palomita">
+        </div>
+        <div id="errorsCounter">Errores: 0</div>
+        <div class="darken-screen" id="darkenScreen">
+            <div>Felicidades, has ganado!</div>
+            <button onclick="restartGame()">Volver a empezar</button>
+        </div>
+        <div id="confettiContainer"></div>
+    </div>
+
+    <script>
+        const images = [
+            { src: "./images/BOCA.gif", answer: "Boca.jpg" },
+            { src: "./images/BRAZO.gif", answer: "Brazos.png" },
+            { src: "./images/CABEZA.gif", answer: "cabeza.png" },
+            { src: "./images/CEJA.gif", answer: "ceja.png" },
+            { src: "./images/DIENTES.gif", answer: "Dientes.jpg" },
+            { src: "./images/ESPALDA.gif", answer: "espalda.png" },
+            { src: "./images/NARIZ.gif", answer: "Nariz.jpg" },
+            { src: "./images/OJO.gif", answer: "Ojos.png" },
+            { src: "./images/OREJA.gif", answer: "Oreja.jpg" },
+            { src: "./images/CUELLO.gif", answer: "Cuello.png" }
+        ];
+
+        const optionImages = [
+            "Boca.jpg", "Brazos.png", "cabeza.png", "ceja.png", "Dientes.jpg",
+            "espalda.png", "Nariz.jpg", "Ojos.png", "Oreja.jpg", "Cuello.png"
+        ];
+
+        let currentImageIndex = 0;
+        let selectedOption = "";
+        let isAnswerCorrect = false;
+        let errorCount = 0;
+
+        function loadCurrentImage() {
+            const currentImage = images[currentImageIndex];
+            document.getElementById("image").src = currentImage.src;
+            renderOptions(currentImage.answer);
+            document.getElementById("resultMessage").style.display = "none";
+        }
+
+        function getRandomOptions(correctAnswer) {
+            let options = [correctAnswer];
+            while (options.length < 4) {
+                const randomOption = optionImages[Math.floor(Math.random() * optionImages.length)];
+                if (!options.includes(randomOption)) {
+                    options.push(randomOption);
+                }
+            }
+            return options.sort(() => Math.random() - 0.5);
+        }
+
+        function renderOptions(correctAnswer) {
+            const optionsContainer = document.getElementById("optionsContainer");
+            optionsContainer.innerHTML = "";
+            const options = getRandomOptions(correctAnswer);
+            options.forEach(option => {
+                const img = document.createElement("img");
+                img.src = `./images/${option}`;
+                img.alt = option;
+                img.classList.add("option");
+                img.onclick = () => selectOption(img, option);
+                optionsContainer.appendChild(img);
+            });
+        }
+
+        function selectOption(img, option) {
+            const options = document.querySelectorAll(".option");
+            options.forEach(opt => opt.classList.remove('selected'));
+            img.classList.add('selected');
+            selectedOption = option;
+            isAnswerCorrect = (selectedOption === images[currentImageIndex].answer);
+            showResult(img);
+        }
+
+        function showResult(img) {
+            if (isAnswerCorrect) {
+                img.classList.add('correct');
+                setTimeout(() => img.classList.add('highlightGreen'), 1000); // Resalta la celda correcta un poco más
+                setTimeout(() => img.classList.remove('highlightGreen'), 2000); // Quita el resalte después de 2 segundos
+            } else {
+                img.classList.add('incorrect');
+                errorCount++;
+                document.getElementById("errorsCounter").textContent = `Errores: ${errorCount}`;
+                setTimeout(() => img.classList.remove('incorrect'), 2000);
+            }
+        }
+
+        function nextImage() {
+            if (!isAnswerCorrect) {
+                alert("Selecciona la imagen correcta para continuar.");
+                return;
+            }
+            currentImageIndex++;
+            if (currentImageIndex < images.length) {
+                loadCurrentImage();
+            } else {
+                showWinScreen();
+            }
+        }
+
+        function showWinScreen() {
+            document.getElementById("darkenScreen").style.display = "flex";
+            startConfetti();
+        }
+
+        function restartGame() {
+            currentImageIndex = 0;
+            errorCount = 0;
+            document.getElementById("errorsCounter").textContent = `Errores: ${errorCount}`;
+            document.getElementById("darkenScreen").style.display = "none";
+            document.getElementById("confettiContainer").innerHTML = "";
+            loadCurrentImage();
+        }
+
+        function startConfetti() {
+            const confettiContainer = document.getElementById("confettiContainer");
+            confettiContainer.style.display = "flex";
+            const colors = ["#ff0", "#f0f", "#0ff", "#f00", "#0f0", "#00f"];
+            for (let i = 0; i < 500; i++) { // Aumentamos a 500 confetis
+                const confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.top = `${Math.random() * 100}vh`;
+                confetti.style.width = `${Math.random() * 10 + 5}px`;
+                confetti.style.height = `${Math.random() * 10 + 5}px`;
+                confettiContainer.appendChild(confetti);    
+            }
+        }
+
+        window.onload = loadCurrentImage;
+
+    </script>
+</body>
+</html>

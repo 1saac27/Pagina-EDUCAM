@@ -1,0 +1,113 @@
+/* Estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Establecer la fuente */
+html {
+    font-family: "Inter", sans-serif;
+}
+
+/* Contenedor principal */
+.grid-container {
+    background-color: #1E90FF;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Contenido principal */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Título Bienvenida */
+.bienvenida {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bienvenida h1 {
+    font-size: 45px;
+    color: #ec4553;
+    background-color: #ffef65;
+    margin: 0;
+    font-family: 'Pacifico', cursive; /* Fuente llamativa */
+}
+
+/* Contenedor de imágenes */
+.contenedor-imagenes {
+    display: flex;
+    justify-content: center; /* Cambiado a center para centrar el cuadro */
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+/* Cuadro blanco para la imagen y el botón */
+.cuadro-blanco {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar contenido */
+    max-width: 500px; /* Ancho máximo opcional */
+    width: 80%; 
+    box-sizing: border-box;
+}
+
+/* Imagen Niño */
+#imagen-nino {
+    max-width: 80%; /* Tamaño mayor */
+    height: auto;
+    border-radius: 5px; /* Bordes redondeados en la imagen */
+}
+
+/* Botón */
+.button-comenzar a {
+    text-decoration: none; /* Elimina el subrayado */
+    padding: 10px 20px;
+    background-color: #E3006D; /* Fondo rosa */
+    color: #ffffff !important; /* Fuerza el color blanco en el texto */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 30px; /* Tamaño de la fuente */
+    display: inline-block;
+}
+
+
+.button-comenzar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+
+
+/* Media query para dispositivos más pequeños */
+@media only screen and (max-width: 768px) {
+    .contenedor-imagenes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cuadro-blanco {
+        width: 90%; /* Ajustar el ancho en móviles */
+    }
+
+    #imagen-nino {
+        max-width: 80%;
+    }
+
+    .bienvenida h1 {
+        font-size: 40px;
+    }
+}

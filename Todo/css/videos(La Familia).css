@@ -1,0 +1,101 @@
+/* Estilos base */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.body-container {
+    font-family: "Inter", sans-serif;
+    color: aliceblue;
+    background-color: #1E90FF;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Contenido principal */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding-top: 50px; /* Ajuste para subir el contenido */
+}
+
+/* Contenedor de la barra de navegación */
+.navbar-container {
+    width: 100%;
+}
+
+/* Descripción del video */
+.descripcion-video {
+    color: aliceblue;
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.descripcion-video .titulo-principal {
+    font-size: 2.5rem; /* Tamaño de la fuente del título */
+    color: #ec4553; /* Color de fondo del título */
+    background-color: #ffef65; /* Color de letras */
+    padding: 5px; /* Añadir algo de espacio interno */
+    border-radius: 8px;
+}
+
+.descripcion-video .subtitulo {
+    font-size: 1rem; /* Tamaño más pequeño del subtítulo */
+    color: aliceblue;
+    margin-top: 10px;
+}
+
+/* Contenedor del video */
+.video-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor del botón */
+.boton-container {
+    margin-top: 20px;
+}
+
+.boton-actividad {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: aliceblue;
+    background-color: navy;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.boton-actividad:hover {
+    background-color: mediumvioletred;
+}
+
+/* Media query para dispositivos más pequeños */
+@media only screen and (max-width: 768px) {
+    .descripcion-video {
+        width: 80%;
+    }
+
+    .video-container {
+        width: 90%;
+    }
+}

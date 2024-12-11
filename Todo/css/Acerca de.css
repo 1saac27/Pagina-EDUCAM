@@ -1,0 +1,105 @@
+/* Estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Establecer la fuente */
+html {
+    font-family: "Comic Sans MS", sans-serif; /* Fuente divertida y amigable */
+}
+
+/* Contenedor principal */
+.grid-container {
+    background-color: #1E90FF;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Contenido principal */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Título Acerca de - estilo llamativo */
+.bienvenida h1 {
+    font-size: 40px;
+    color: #ec4553; /* Cambia el color del texto a blanco */
+    background-color: #ffef65; /* Agrega un fondo rosa */
+    padding: 5px 10px; /* Espaciado interno para destacar el fondo */
+    border-radius: 5px; /* Bordes redondeados para un estilo suave */
+    margin: 0;
+    font-family: 'Baloo 2', cursive;
+    letter-spacing: 2px;
+    text-align: center;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.bienvenida h1::first-letter {
+    text-transform: uppercase;
+}
+
+.bienvenida h1 span {
+    text-transform: lowercase;
+}
+
+
+
+/* Ajuste en pantallas más pequeñas */
+@media only screen and (max-width: 768px) {
+    .bienvenida h1 {
+        font-size: 30px; /* Ajustar tamaño en dispositivos móviles */
+        letter-spacing: 1px; /* Reducir espaciado en pantallas pequeñas */
+    }
+}
+
+/* Estilos para el texto */
+.texto-acerca-de {
+    font-family: "Comic Sans MS", sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #f3efef;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    text-align: justify;
+}
+
+/* Botón */
+.button-comenzar {
+    background-color: #E3006D;
+    border-radius: 10px;
+    font-size: 30px;
+    color: #f9f9f9;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-comenzar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.button-comenzar a {
+    text-decoration: none;
+    color: rgb(250, 247, 249);
+}
+
+/* Media query para dispositivos más pequeños */
+@media only screen and (max-width: 768px) {
+    .texto-acerca-de {
+        font-size: 1rem;
+        padding: 15px;
+    }
+
+    .bienvenida h1 {
+        font-size: 30px;
+    }
+}

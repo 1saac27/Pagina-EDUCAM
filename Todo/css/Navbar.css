@@ -1,0 +1,95 @@
+/* PARA RESPONSIVIDAD UTILIZAMOS PORCENTAJES PARA COLOCAR LOS OBJETOS Y CONTENEDORES */
+
+/* Estilos para la barra de navegación */
+.nav-01 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Asegura que los elementos estén alineados correctamente */
+    background-color: #f9f9f9;
+    height: 90px;
+    padding: 0 20px; /* Añade un poco de espacio a los lados */
+}
+
+.nav-01 h2 {
+    margin-right: 5%;
+    font-family: "Inter", sans-serif;
+    font-size: 1.5rem;
+    color: #0E7A9A;
+}
+
+/* Contenedor de los botones en la navbar */
+.nav-01 .buttons-navbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; /* Añade espacio entre los botones */
+}
+
+/* Estilo para los enlaces de los botones */
+.buttons-navbar a {
+    font-family: "Inter", sans-serif;
+    font-size: 1.375rem;
+    color: white;
+    text-decoration: none;
+    background-color: #E5097F;
+    display: inline-block;
+    border-radius: 15px;
+    padding: 10px 20px; /* Espaciado interno del botón */
+    text-align: center;
+    white-space: nowrap; /* Evita que el texto se desborde */
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover en botones */
+.buttons-navbar a:hover {
+    background-color: #095d72; /* Color más oscuro al hacer hover */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra al hacer hover */
+}
+
+/* Estilos para h3 dentro de los botones */
+.nav-01 .buttons-navbar a h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Ajustes del logo */
+#SOFTEDUCAM {
+    max-width: 450px; /* Aumenta el tamaño máximo del logo */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+/* Estilos responsivos para pantallas más pequeñas */
+@media only screen and (max-width: 768px) {
+    #SOFTEDUCAM {
+        max-width: 200px; /* Ajuste de tamaño para pantallas pequeñas */
+    }
+}
+
+/* Estilos responsivos */
+@media only screen and (max-width: 768px) {
+    /* Para pantallas pequeñas */
+    .nav-01 {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto; /* Permite que el navbar crezca según el contenido */
+        padding: 10px;
+    }
+
+    .nav-01 h2 {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    /* Ajuste de botones para pantallas más pequeñas */
+    .nav-01 .buttons-navbar {
+        flex-wrap: wrap; /* Envuelve los botones en varias líneas si es necesario */
+        justify-content: center;
+        width: 100%; /* Asegura que los botones ocupen el espacio completo */
+    }
+
+    .nav-01 .buttons-navbar a {
+        font-size: 1rem; /* Reduce el tamaño de la fuente */
+        padding: 8px 16px; /* Ajusta el espaciado interno */
+        margin: 5px 0; /* Espaciado entre los botones */
+    }
+}

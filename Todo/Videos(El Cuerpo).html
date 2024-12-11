@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- LINKS DE BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/videos(el cuerpo).css">
+    <!-- SCRIPT DE LLAMADA DEL NAVBAR  -->
+    <link rel="stylesheet" href="css/Navbar.css">
+    <title>Inicio de Temas</title>
+    <style>
+        /* Estilos adicionales para el modal */
+        .modal-title, .modal-body {
+            color: black; /* Color negro para el título y el contenido del modal */
+        }
+    </style>
+</head>
+<body class="body-container">
+    <!-- DIV DE LLAMADA DEL NAVBAR -->
+    <div id="navbar-container"></div>
+
+    <nav class="nav-01">
+        <img src="assets/soft.png" alt="" id="SOFTEDUCAM">
+        <div class="buttons-navbar">
+            <a href="../IndexR.html"><p>Inicio</p></a>
+            <a href="Contenido.html"><p>Temas</p></a>
+            <a href="Acerca de.html" class="acerca-de"><p>Acerca de</p></a>
+            <!-- Botón de Ayuda con activación del modal -->
+            <a href="#" data-bs-toggle="modal" data-bs-target="#ayudaModal"><p>Ayuda</p></a>
+        </div>
+    </nav>
+
+    <!-- Modal de Ayuda -->
+    <div class="modal fade" id="ayudaModal" tabindex="-1" aria-labelledby="ayudaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ayudaModalLabel">Ayuda</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    En esta sección se incluyen los videos relacionados a cada tema.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </nav>
+
+    <main>
+        <div class="descripcion-video">
+            <h2 class="titulo-principal">El Cuerpo</h2>
+            <h3 class="subtitulo">¡Aprendamos Lenguaje de Señas Mexicana (LSM)!</h3>
+            <p>En este video aprenderás el vocabulario y las palabras más útiles relacionadas con el cuerpo humano.</p>
+        </div>
+        <div class="video-container">
+            <video controls>
+                <source src="Videos/El cuerpo.mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+        </div>
+        <div class="boton-container">
+            <a href="Buscar-palabras - (El cuerpo)/Index.html" class="boton-actividad">Ir a la actividad</a>
+        </div>
+    </main>
+</body>
+</html>

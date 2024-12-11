@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet">
+    <!-- LINKS DE BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/Navbar.css">
+    <title>Instrucciones</title>
+    <style>
+        body {
+            background-color: #000000; /* Fondo negro */
+            color: #ffffff; /* Texto blanco */
+        }
+
+        /* Estilos para las imágenes */
+        .imagen-ayuda {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px; /* Bordes redondeados en las imágenes */
+            display: block;
+            margin: 0 auto; /* Centrando las imágenes */
+        }
+
+        /* Estilos para el texto */
+        p {
+            font-size: 1.7rem;
+            text-align: justify;
+            line-height: 1.2;
+            margin: 20px auto;
+            max-width: 900px;
+        }
+
+        li {
+            font-family: "Comic Sans MS", sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.2;
+            color: #f3efef;
+            padding: 3px;
+            margin: 20px auto;
+            max-width: 900px;
+            text-align: justify;
+        }
+
+        /* Cambiar viñetas de sublistas a círculo negro con texto blanco */
+        ol > li {
+            list-style-type: decimal; /* Números para las listas principales */
+        }
+
+        ol li ul {
+            list-style-type: disc;
+        }
+
+        ol li ul li::marker {
+            color: #faf6f6 /* Color negro solo para el marcador */
+        }
+
+        h1 {
+            font-size: 8px; /* Tamaño de letra más grande para el título */
+            color: #f568b5;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 0;
+            font-family: 'Baloo 2', cursive;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        /* Ajustes para dispositivos pequeños */
+        @media (max-width: 576px) {
+            p {
+                font-size: 1.2rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body class="grid-container">
+    <nav class="nav-01">
+        <img src="assets/soft.png" alt="Logo SOFTEDUCAM" id="SOFTEDUCAM">
+        <div class="buttons-navbar">
+            <a href="../IndexR.html"><p>Inicio</p></a>
+            <a href="Contenido.html"><p>Temas</p></a>
+            <a href="Acerca de.html" class="acerca-de"><p>Acerca de</p></a>
+            <a href=""><p>Ayuda</p></a>
+        </div>
+    </nav>   
+    <!-- DIV DE LLAMADA DEL NAVBAR -->
+    <div id="navbar-container"></div>
+
+    <!-- CUERPO DE LA PÁGINA -->
+    <main>
+        <div class="bienvenida">
+            <h1>Memorama</h1>
+        </div>
+        <div class="contenedor-instrucciones">
+            <p><strong>Objetivo de la Actividad:</strong><br>
+            El objetivo es emparejar correctamente las cartas que contienen las letras del abecedario en Lengua de Señas Mexicana (LSM) con su representación escrita en español.</p>
+
+            <p><strong>Cómo jugar:</strong></p>
+            <ol>
+                <li><strong>Iniciar el juego:</strong>
+                    <ul>
+                        <li>Al comenzar, verás un conjunto de cartas distribuidas boca abajo en la pantalla.</li>
+                        <li>Cada carta esconde una letra del abecedario, ya sea representada con una seña de LSM o con su forma escrita en español.</li>
+                    </ul>
+                </li>
+                <li><strong>Seleccionar una carta:</strong>
+                    <ul>
+                        <li>Haz clic en cualquier carta para voltearla. Esta carta mostrará una seña en LSM o una letra escrita.</li>
+                        <li>Observa con atención la letra que aparece para recordar su ubicación.</li>
+                    </ul>
+                </li>
+                <li><strong>Buscar el par correspondiente:</strong>
+                    <ul>
+                        <li>Selecciona una segunda carta para intentar encontrar la pareja de la carta que volteaste primero.</li>
+                        <li>Debes emparejar la seña de una letra con la letra escrita correspondiente.</li>
+                    </ul>
+                </li>
+                <li><strong>Emparejar las cartas:</strong>
+                    <ul>
+                        <li>Si las dos cartas coinciden (por ejemplo, la seña de la letra "A" con la letra "A" escrita), ambas quedarán visibles y habrás completado un par.</li>
+                        <li>Si las cartas no coinciden, se voltearán nuevamente y deberás recordar su posición para futuros intentos.</li>
+                    </ul>
+                </li>
+                <li><strong>Repetir el proceso:</strong>
+                    <ul>
+                        <li>El memorama consta de 28 pares de cartas, que incluyen las siguientes letras: a, b, c, d, e, f, g, h, i, j, k, l, m, n, ñ, o, p, q, r, s, t, u, v, w, x, y, z en español y LSM.</li>
+                        <li>El escenario está separado por agrupaciones de 5 pares de cartas. Cada vez que se completa una sección, se puede generar otro grupo de cartas con letras distintas ordenadas aleatoriamente.</li>
+                    </ul>
+                </li>
+                <li><strong>Finalizar el juego:</strong>
+                    <ul>
+                        <li>El juego termina cuando hayas emparejado todas las cartas correctamente. Al final, podrás ver los puntos y errores obtenidos mientras se está jugando, si es posible, repetir el juego para mejorar tu memoria y velocidad.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <img src="Ayuda/img/img (memorama).png" alt="Imagen de ayuda para el memorama" class="imagen-ayuda">
+        </div>
+    </main>
+</body>
+</html>

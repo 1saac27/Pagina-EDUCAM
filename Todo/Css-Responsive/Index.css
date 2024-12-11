@@ -1,0 +1,105 @@
+/* Estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Establecer la fuente */
+html {
+    font-family: "Inter", sans-serif;
+}
+#navbar-container{
+    margin-bottom: 100px;
+}
+/* Contenedor principal */
+.grid-container {
+    background-color: rgb(77, 197, 246);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Cambiar height a min-height */
+}
+
+/* Contenido principal */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Utilizar auto-fit para que se ajuste al ancho del contenedor y minmax para establecer un ancho mínimo y máximo */
+    gap: 20px; /* Agregar espacio entre las columnas */
+    align-items: center;
+    padding: 20px; /* Agregar relleno */
+}
+
+.navbar-container{
+    width: 100%;
+}
+/* Logo */
+#LOGO {
+    margin-left: auto; /* Ajustar el margen izquierdo automáticamente */
+    margin-right: auto; /* Ajustar el margen derecho automáticamente */
+    max-width: 100%;
+    height: auto;
+    animation: zoom 6s infinite alternate;
+}
+
+/* Botón */
+.tex-button {
+    text-align: center; /* Centrar el contenido */
+}
+
+.tex-button h1 {
+    color: #f9f9f9;
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+
+.tex-button p {
+    font-size: 25px;
+    text-align: center;
+}
+
+.tex-button .button-comenzar {
+    background-color: #E3006D;
+    border-radius: 10px;
+    font-size: 30px;
+    color: #f9f9f9;
+    text-decoration: none;
+    display: inline-block; /* Ajustar el ancho automáticamente */
+    padding: 10px 20px; /* Añadir espacio alrededor del texto */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tex-button .button-comenzar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.tex-button .button-comenzar a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+/* Media query para dispositivos más pequeños */
+@media only screen and (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr; /* Cambiar a una sola columna */
+    }
+
+    #LOGO {
+        max-width: 80%; /* Reducir el ancho del logo */
+    }
+
+    .tex-button .button-comenzar {
+        margin: 0 auto; /* Centrar horizontalmente */
+    }
+}
+
+
+
+
+
+
+
+
+
+

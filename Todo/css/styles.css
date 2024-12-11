@@ -1,0 +1,73 @@
+body {
+    background-color: rgb(77, 197, 246);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Asegura que el contenido se extienda hasta el final de la ventana */
+    margin: 0;
+    /* Elimina el margen predeterminado del cuerpo */
+}
+
+main {
+    flex: 1;
+    /* Hace que el área principal ocupe todo el espacio disponible */
+}
+
+.botones {
+    display: flex;
+    justify-content: flex-end;
+    /* Alinea los botones a la derecha */
+    position: fixed;
+    bottom: 20px;
+    /* Mueve los botones 20px hacia arriba */
+    right: 20px;
+    /* Mueve los botones 20px hacia la izquierda */
+    padding: 10px;
+}
+
+.boton {
+    margin-left: 10px;
+    /* Espacio entre los botones */
+    background-color: #2A6BB7;
+    /* Color de fondo */
+    color: #fff;
+    /* Color del texto */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 150px;
+    /* Ancho fijo para ambos botones */
+    font-size: 16px;
+    /* Tamaño de fuente */
+    font-weight: bold;
+    /* Negritas */
+}
+
+
+/* Estilo específico para el botón "Volver" */
+
+.boton.izquierda {
+    margin-left: 0;
+    /* Elimina el margen izquierdo para el botón "Volver" */
+    background-color: #2A6BB7;
+    /* Cambia el color de fondo */
+    color: #000;
+    /* Color del texto negro */
+}
+
+
+/* Estilos adicionales para hacer los botones responsivos */
+
+@media screen and (max-width: 1080px) {
+    .botones {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .boton {
+        margin-top: 10px;
+        /* Agrega espacio entre los botones */
+        opacity: 0.9;
+        /* Hace los botones un poco más opacos */
+    }
+}

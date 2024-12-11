@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #f9f9f9;
+    color: rgb(202, 117, 117);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Para asegurarnos de que esté por encima del resto del contenido */
+}
+
+.logo img {
+    width: 450px;
+    /* Ajusta el tamaño de tu logo según sea necesario */
+}
+
+.nav-buttons {
+    display: flex;
+    margin-right: 40px;
+    /* Ajusta la distancia a la derecha */
+}
+
+.nav-button {
+    background-color: #0E7A9A;
+    /* Cambia el color de fondo a azul cielo */
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 25px 25px;
+    /* Ajusta el padding para hacer los botones más grandes */
+    margin-left: 20px;
+    font-size: 18px;
+    /* Ajusta el tamaño de la fuente */
+    cursor: pointer;
+    border-radius: 20px;
+    /* Añade bordes redondeados */
+}
+
+.nav-button:hover {
+    background-color: rgba(45, 98, 197, 0.3);
+    /* Cambia el color de fondo cuando se pasa el ratón por encima */
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+    .nav-buttons {
+        margin-right: 0;
+        /* Elimina el margen a la derecha */
+        margin-top: 10px;
+    }
+    .nav-button {
+        margin: 5px 3px;
+        /* Ajusta el margen vertical y horizontalmente */
+        padding: 20px 20px;
+        /* Ajusta el tamaño del padding para hacer los botones más pequeños */
+        font-size: 18px;
+        /* Reduzca el tamaño de la fuente para ajustarse al tamaño del botón */
+    }
+    .logo img {
+        width: 200px;
+        /* Ajusta el tamaño de la imagen del logo para pantallas más pequeñas */
+        align-self: flex-start;
+        /* Alinea el logo a la parte superior (izquierda) del contenedor flex */
+    }
+}

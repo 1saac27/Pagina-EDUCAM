@@ -1,0 +1,208 @@
+/* Estilos para la barra de navegación */
+.nav-01 {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que la barra esté encima de otros elementos */
+    background-color: #ffffff; /* Color de fondo */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional para mayor visibilidad */
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    align-items: center; /* Alinea verticalmente los elementos */
+    padding: 10px 20px;
+}
+
+/* Contenedor principal */
+.container {
+    margin-top: 120px; /* Ajusta el valor según el tamaño de la barra de navegación y el contador de errores */
+    position: relative;
+    width: 90%; /* Ajustar el tamaño del contenedor */
+    max-width: 1100px; /* Aumentar el tamaño máximo del contenedor */
+    text-align: center;
+    background-color: transparent; /* Fondo transparente para el contenedor */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Contador de errores posicionado debajo de la barra de navegación */
+.error-container {
+    position: fixed; /* Fijo para mantenerlo debajo de la barra de navegación */
+    top: 100px; /* Espacio desde la parte superior (ajustar según la altura de la barra) */
+    right: 20px; /* Alineado a la derecha */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente para mayor visibilidad */
+    padding: 10px 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    font-size: 24px; /* Tamaño del texto */
+    color: red; /* Color del texto para resaltar errores */
+    z-index: 1001; /* Asegura que esté por encima del resto del contenido */
+}
+
+
+#menuButton:hover {
+    background-color: darkgreen; /* Color más oscuro cuando se pasa el ratón */
+}
+
+/* Contenedores de arrastre y soltar */
+.drag-container, .drop-container, .reference-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px; /* Puedes disminuir este valor si es necesario */
+    margin-top: -10px; /* Agregar margen superior para subir los GIFs */
+}
+
+.drag-container img, .reference-container img {
+    width: 150px; /* Aumentar el tamaño de las imágenes */
+    height: 150px; /* Aumentar el tamaño de las imágenes */
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+
+.drag-container img:hover {
+    transform: scale(1.1);
+}
+
+.drop-area {
+    width: 150px; /* Aumentar el tamaño de las áreas de drop */
+    height: 150px; /* Aumentar el tamaño de las áreas de drop */
+    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.3s;
+}
+
+.drop-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.reference-container img {
+    opacity: 1; /* Hacer las imágenes de referencia ligeramente transparentes */
+}
+
+/* Contenedor de errores móviles (si es necesario) */
+.error-container-mobile {
+    display: none; /* Oculto en dispositivos grandes */
+}
+
+/* Contador de errores en móvil (opcional) */
+@media (max-width: 768px) {
+    .error-container {
+        top: 80px; /* Ajusta si la barra de navegación y el contador tienen mayor altura en móvil */
+        right: 10px;
+        font-size: 18px;
+        padding: 8px 16px;
+    }
+
+    #menuButton {
+        font-size: 1.2em;
+        padding: 10px 20px;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .drag-container img, .reference-container img, .drop-area {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Animaciones CSS */
+@keyframes vibrate {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes flashRed {
+    0% { border-color: red; }
+    50% { border-color: transparent; }
+    100% { border-color: red; }
+}
+
+@keyframes flashGreen {
+    0% { border-color: green; }
+    50% { border-color: transparent; }
+    100% { border-color: green; }
+}
+
+.drop-area.incorrect {
+    animation: vibrate 0.5s, flashRed 2s;
+}
+
+.drop-area.correct {
+    animation: flashGreen 2s;
+}
+
+/* Fondo y tipografía general */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1E90FF; /* Fondo azul para toda la página */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Contenedor final */
+#finalMessageOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Aumentar la opacidad de la pantalla oscurecida */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1003; /* Overlay oscuro en una capa superior */
+    font-size: 42px; /* Aumentar el tamaño del texto */
+    text-align: center;
+}
+
+#finalMessageOverlay button {
+    margin-top: 30px; /* Aumentar el espacio del botón */
+    font-size: 24px; /* Aumentar el tamaño del botón */
+    padding: 15px 30px; /* Ajustar el relleno del botón */
+    background-color: yellow;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#confettiCanvas {
+    position: fixed; /* Asegurarse de que el canvas cubra toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1004; /* Poner el confeti por encima del overlay oscuro */
+}
+
+/* Botón Siguiente */
+#nextButton {
+    background-color: #007bff;
+    color: white;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#nextButton:hover {
+    background-color: #0056b3;
+}

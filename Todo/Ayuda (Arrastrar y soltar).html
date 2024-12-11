@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet">
+    <!-- LINKS DE BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/Navbar.css">
+    <title>Instrucciones</title>
+    <style>
+        body {
+            background-color: #000000; /* Fondo negro */
+            color: #ffffff; /* Texto blanco */
+        }
+
+        /* Estilos para las imágenes */
+        .imagen-ayuda {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px; /* Bordes redondeados en las imágenes */
+            display: block;
+            margin: 0 auto; /* Centrando las imágenes */
+        }
+
+        /* Estilos para el texto */
+        p {
+            font-size: 1.2rem; /* Texto más grande */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        /* Opcional: ajustes para dispositivos pequeños */
+        @media (max-width: 576px) {
+            p {
+                font-size: 1rem; /* Texto más pequeño en pantallas pequeñas */
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="grid-container">
+    <nav class="nav-01">
+        <img src="assets/soft.png" alt="Logo SOFTEDUCAM" id="SOFTEDUCAM">
+        <div class="buttons-navbar">
+            <a href="../IndexR.html"><p>Inicio</p></a>
+            <a href="Contenido.html"><p>Temas</p></a>
+            <a href="Acerca de.html" class="acerca-de"><p>Acerca de</p></a>
+            <a href=""><p>Ayuda</p></a>
+        </div>
+    </nav>   
+    <!-- DIV DE LLAMADA DEL NAVBAR -->
+    <div id="navbar-container"></div>
+
+    <!-- CUERPO DE LA PÁGINA -->
+    <main>
+        <div class="bienvenida">
+            <h1>Arrastrar y Soltar</h1>
+        </div>
+        <div class="contenedor-instrucciones">
+            <p><strong>Objetivo de la Actividad:</strong><br>
+            El objetivo de esta actividad es que los participantes asocien correctamente los elementos arrastrando y soltando objetos en sus respectivos lugares.</p>
+            
+            <p><strong>Pasos a Seguir:</strong></p>
+            <ol>
+                <li><strong>Seleccionar el objeto:</strong>
+                    <ul>
+                        <li>Coloca el puntero del ratón sobre el elemento que deseas mover.</li>
+                        <li>Mantén presionado el botón izquierdo del ratón para "agarrar" el objeto.</li>
+                    </ul>
+                </li>
+                <li><strong>Arrastrar el objeto:</strong>
+                    <ul>
+                        <li>Sin soltar el botón del ratón, mueve el puntero para desplazar el objeto hacia la zona del recuadro punteado donde quieras colocarlo.</li>
+                        <li>Cuando el objeto esté sobre la zona correcta, suelta el botón del ratón para dejar el elemento en su lugar. Si la imagen se encuentra en la casilla correcta, cambiará de color verde, o de color rojo si es incorrecto.</li>
+                    </ul>
+                </li>
+                <li><strong>Soltar el objeto:</strong>
+                    <ul>
+                        <li>Cuando el usuario complete la tarea correctamente se mostrará un mensaje de felicitación y animaciones visuales que simulan la caída o explosión de confeti.</li>
+                    </ul>
+                </li>
+                <li><strong>Repetir el proceso:</strong>
+                    <ul>
+                        <li>Puedes corregir cualquier error repitiendo el proceso, arrastrando el objeto nuevamente hasta su lugar correcto. Se mostrará en pantalla el total de errores que se haya obtenido.</li>
+                    </ul>
+                </li>
+            </ol>
+            <img src="Ayuda/img/img 1(arrastrar y soltar).png" alt="Ejemplo de arrastrar y soltar" class="imagen-ayuda">
+        </div>
+    </main>
+</body>
+</html>
